@@ -1,0 +1,121 @@
+{% extends 'voterregister/layout.html' %}
+{% block body %}
+
+<style>
+    .error-msg {
+        background-color: red;
+    }
+</style>
+
+<style>
+    .success-msg {
+        background-color: green;
+    }
+</style>
+
+<div class="topnav">
+    <a href="/">Home</a>
+    <a href="/vote">Vote</a>
+    <a href="/admin">admin</a>
+    
+    <div class="dropdown pad">
+        <button  class="dropbtn">register</button>
+        <div class="dropdown-content">
+            <a href="/candidate_register">Candidate</a>
+            <a href="/voter_register">voter</a>
+        </div>
+    </div>
+    <span class="navbar-brand  election">Election system</span>
+  </div>
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Voter Registration Form</h2>
+                    {% if error %}
+                        <center><div  class="error-msg">{{ error }}</div></center>
+                    {% endif %}
+                    <br>
+                    {% if success_msg %}
+                        <center><div  class="success-msg">{{ success_msg }}</div></center>
+                    {% endif %}
+                    <br>
+                    <form method="POST">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">first name</label>
+                                    <input class="input--style-4" type="text" name="first_name" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">last name</label>
+                                    <input class="input--style-4" type="text" name="last_name" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Birthday</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4 js-datepicker" type="date" name="birthday" required>
+                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Gender</label>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">Male
+                                            <input type="radio" checked="checked" name="gender" value="male">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Female
+                                            <input type="radio" name="gender" value="female">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Aadhar ID</label>
+                                    <input class="input--style-4" type="text" name="aadhar" maxlength="12" required>
+                                </div>
+                            </div>
+
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Voter Phone</label>
+                                    <input class="input--style-4" type="text"  value="{{ phone }}" name="phone" maxlength="10" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-2">
+ 
+                            <!-- <div class="input-group">
+                             
+                            <label class="label">Uplode image</label>
+                             
+                            <input class="input--style-4" type="file" class="filestyle" data-icon="false" name="fingerprint">
+                            
+                           
+                            </div> -->
+                             
+                        </div>
+                        
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Open Cam & Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

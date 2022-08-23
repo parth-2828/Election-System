@@ -1,0 +1,84 @@
+{% extends 'candidates/layout.html' %}
+{% block body %}
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins ">
+<div class="container ">
+    <div class="row">
+    <table class="table table-striped custab sticky-top ">
+            <thead class="fixed-top">
+                        <tr >
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>DOB</th>
+                            <th>Gender</th>
+                            <th>Aadhar</th>
+                            <th>Phone</th>
+                            <th >Party Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+            
+        {% for data in result %}
+        
+        <tr>
+        <td>{{ data[0] }}</td> 
+        <td>
+            <div class='edit' >
+                <input type='text' class='txtedit' value='{{data[1]}}' id='firstname_{{data[0]}}'> 
+            </div> 
+            
+        </td>
+        <td>
+            <div class='edit' > 
+                <input type='text' class='txtedit' value='{{data[2]}}' id='lastname_{{data[0]}}'> 
+            </div> 
+            
+        </td> 
+        <td>
+            <div class='edit' >
+                <input type='text' class='txtedit' value='{{data[3]}}' id='dob_{{data[0]}}'> 
+            </div> 
+            
+        </td>
+        <td>
+            <div class='edit' > 
+                <input type='text' class='txtedit' value='{{data[4]}}' id='gender_{{data[0]}}'> 
+            </div> 
+            
+        </td>
+        <td>
+            <div class='edit' > 
+                <input type='text' class='txtedit' value='{{data[5]}}' id='adhar_{{data[0]}}'> 
+            </div> 
+            
+        </td>
+        <td>
+            <div class='edit' >
+                <input type='text' class='txtedit' value='{{data[6]}}' id='phone_{{data[0]}}'> 
+            </div> 
+            
+        </td>
+        <td>
+            <div class='edit' >
+                <input type='text' class='txtedit' value='{{data[7]}}' id='party_{{data[0]}}'> 
+            </div> 
+            
+        </td>
+
+        <td>
+            <a class="btn btn-danger btn-xs" href="/del/{{data[0]}}" ><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+        </td>
+        <!-- <td class="text-center"><a class='btn btn-info btn-xs' href="/edit/{{data[0]}}" ><span class="glyphicon glyphicon-edit"></span> Edit</a>  -->
+       
+    </tr>
+
+    {% endfor %}
+    
+    </table>
+    </div>
+    
+</div>
+</div>
+{% endblock %}

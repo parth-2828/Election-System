@@ -1,0 +1,37 @@
+{% extends 'layout.html'%}
+{% block body %}
+
+<div class="topnav">
+    <a href="/">Home</a>
+    <a href="/vote">Vote</a>
+    <a href="/admin">admin</a>
+    
+    <div class="dropdown">
+        <button  class="dropbtn">register</button>
+        <div class="dropdown-content">
+            <a href="/candidate_register">Candidate</a>
+            <a href="/voter_register">voter</a>
+        </div>
+    </div>
+    <span class="navbar-brand  election">Election system</span>
+  </div>
+<div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            {% if session["startVoting"]=="yes" %}
+            <p id="profile-name" class="profile-name-card">Aadhar Id</p>
+
+            <form method="POST" class="form-signin"action='/vote'>
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="number" id="inputEmail" class="form-control" placeholder="Enter Aadhar number" name="aadhar" required autofocus>
+                
+                <div id="remember" class="checkbox">
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Enter</button>
+            </form><!-- /form -->
+            {% else %}
+             <h2>Voting not started yet.</h2>
+             {% endif %}
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+    {% endblock %}

@@ -1,0 +1,209 @@
+{% extends 'layout.html'%}
+{% block body %}
+
+<!------ Include the above in your HEAD tag ---------->
+<html>
+  <head>
+  </head>
+<style>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+    display: inline-block;
+    margin-left: 90px;
+  }
+  .card img {
+    margin-left: 10px;
+  }
+  .card h2{
+    margin:15px 0;
+
+  }
+  .card p{
+    font-size: 18px;
+    line-height: 2.0rem;
+    font-weight: 100;
+    text-align: justify;
+  }
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .container {
+    padding: 2px 16px;
+  }
+
+  #call-to-action {
+    background-image: url("/static/images/Darkdesk.png");
+    background-position: 50% 50%;
+    padding-bottom:45px;
+    background-size: auto 1020px;
+    margin: 80px 0;
+  }
+
+  .showcase {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .colIMG {
+    width: 80%;
+    margin: auto;
+  } 
+
+  .colIMG p {
+    text-align:center;
+    font-size: 2em;
+    line-height: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffffff
+  }
+  .action-title {
+    font-size: 5em;
+    font-weight: 100;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding-top: 80px;
+    padding-bottom: 20px;
+  }
+  
+  .colIMG a{
+    width:40px;
+    margin:auto;
+    background-color: #428bca;
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+    padding:10px 40px;
+  }
+
+  .colIMG a:hover {background-color: #1f7ed1;}
+</style>
+<body>
+
+<div class="topnav ">
+  <a href="/">Home</a>
+  <a href="/vote">Vote</a>
+  <a href="/admin">admin</a>
+  <a id="resultHome" href="/result">result</a>
+
+  <div class="dropdown">
+      <button class="dropbtn">Register</button>
+      <div class="dropdown-content">
+          <a href="/candidate_register">Candidate</a>
+          <a href="/voter_register">voter</a>
+          
+      </div>
+  </div>
+  
+  <div class="logo-holder logo-6">
+      <h3>Election <span>System</span></h3>
+  </div>
+  <!-- <span class="navbar-brand  election logo">Election system</span> -->
+</div>
+<!-- <img class="d-block w-100 "  src="{{url_for('static',filename='images/vote3.jpg')}}" alt="First slide"> -->
+<section>
+  <div class="row newsTicker">
+    <div class="col-md-12">
+        <div class="newsM">
+
+            <div class="news">
+              <span><i class="fa fa-newspaper-o"></i></span>
+              <span>NEWS TICKER</span>
+            </div>
+
+            <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"> 
+              {% if session["startVoting"]=="yes" %}
+              <a href="#">voting has started.</a><a href="/vote" class="vote"> vote</a> <a href="#">for your favourite candidate </a> <a href="#">Results will be displayed soon.</a> </marquee>
+              
+              {% elif session["res"]=="yes" and session["startVoting"]=="no" %}
+             <a href="#">Results are out now.check</a><a href="/result" class="vote"> here</a></marquee>
+              {% else %}
+              <a href="#">voting has not started yet.we will notify you when its done.</a> </marquee>
+              {% endif %}
+              
+            </div>
+    </div>
+  </div>
+
+  <img class="mySlides" src="{{url_for('static',filename='images/10.jpg')}}" style="width:100%" >
+
+  <img class="mySlides"  src="{{url_for('static',filename='images/2.png')}}" style="width:100%" >
+  
+  <img class="mySlides" src="{{url_for('static',filename='images/test.jpg')}}" style="width:100%"  >
+  
+  <img class="mySlides"  src="{{url_for('static',filename='images/4.jpg')}}" style="width:100%" >
+
+  
+    
+   
+
+</section>
+
+<!-- MIDDLE CARDS -->
+<div class="card">
+  <img class="my" src="{{url_for('static',filename='images/add-friend.png')}}" style="width:20%;height:5%" >
+  <div class="container">
+    <h2><b>Registration</b></h2> 
+    <p>Election System offers online voter registration for Indian citizens who have attained the age of 18 on the qualifying date (1st of January of the year of revision of electoral roll).Citizen, can enroll himself/herself..</p> 
+  </div>
+</div>  
+
+<div class="card">
+  <img class="my" src="{{url_for('static',filename='images/vote.png')}}" style="width:20%;height:5%" >
+  <div class="container">
+    <h2><b>Election</b></h2> 
+    <p>India , the world's largest democracy by electorate was established with independence in 1947. It happens to be the largest democracy with a robust and rich democratic culture marked by faith of Indian People in the electoral process</p> 
+  </div>
+</div>
+<!-- MIDDEL CARDS END -->
+
+<!-- TEXT ON IMAGE -->
+<div id="call-to-action">
+  <div class="showcase">
+    <div class="colIMG">
+      <h1 class="action-title">What are you waitng for?</h1>
+      <p>Register Yourself If Your Are 18<sup>+</sup></p>
+      <br>
+      <p><a href="/voter_register" class="btnREG">Register</a></p>
+    </div>
+  </div>
+</div>
+<!-- END OF TEXT ON IMAGE -->
+
+<!-- About us -->
+
+  <div class="abt">
+    <h2 class="aboutTitle">ABOUT <span>US</span></h2>
+    <p >This site is made for voter education, spreading voter awareness and promoting voter literacy in India. Since 2009, we have been working towards preparing India’s electors and equipping them with basic knowledge related to the electoral process. Primary goal is to build a truly participative democracy in India by encouraging all eligible citizens to vote and make an informed decision during the elections. The programme is based on multiple general as well as targeted interventions which are designed according to the socio-economic, cultural and demographic profile of the state as well as the history of electoral participation in previous rounds of elections and learning thereof.We are always looking forward to achieving the aim of building a stronger democracy through greater synergy with Civil Society Organisations, Media and Corporate Houses and even greater queries, suggestions, and participation from individuals.</p>
+  </div>
+  
+
+<!-- End of About Us -->
+
+
+<script>
+  // Automatic Slideshow - change image every 3 seconds
+  var myIndex = 0;
+  carousel();
+  
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 5000);
+  }
+  </script>
+  
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Election System</title>
+    <link rel="icon" href="/static/Images/vote.png">
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.w3-bar-block a{
+    text-decoration: none;
+ }
+ .topnav{
+  box-shadow: 3px 5px 4px #888888;
+  margin-bottom: 20px;
+  background-color:#1A374D;
+ }
+ 
+.w3-bar h1{
+  text-align: center;
+  font-size: 25px;
+  padding: 0;
+  font-weight: bold;
+  color:#ffffff;
+} 
+.admin-profile{
+  margin-top: 10px;
+}
+.welcome{
+  margin-top: 15px;
+}
+</style>
+</head>
+<body class="w3-light-grey" >
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-large topnav" style="z-index:4">
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <!-- <button class="btn btn-primary backBtn btn-lg pull-left" type="button" >Back</button> -->
+  <!-- <button type="button" class="btn btn-primary btn-lg" style="padding:9px 12px;width:100px">Admin <span class="badge"></span></button> -->
+  <h1>ADMIN PANEL</h1>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row admin-profile">
+    <div class="w3-col s4">
+      <img src="{{url_for('static',filename='images/avatar.jpeg')}}" class="w3-circle w3-margin-right" style="width:46px">
+    </div>
+    <div class="w3-col s8 w3-bar welcome">
+      <span>Welcome, <strong>Admin</strong></span><br>
+    </div>
+  </div>
+  <hr>
+  <div class="w3-container">
+    <h5>Dashboard</h5>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" active onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+    <a href="http://127.0.0.1:5000/candidates" class="w3-bar-item w3-button w3-padding" target="iframe_a"><i class="fa fa-users fa-fw"></i>  Candidates
+    </a>
+    <a href="http://127.0.0.1:5000/voters" class="w3-bar-item w3-button w3-padding" target="iframe_a"><i class="fa fa-users fa-fw"></i> Voters</a>
+    <a href="/declareResult" id="res" class="w3-bar-item w3-button w3-padding" target="iframe_a"><i class="fa fa-bar-chart"></i> Results</a>
+    <a href="/VotingStage" class="w3-bar-item w3-button w3-padding" target="iframe_a"><i class="fa fa-calendar"></i> Voting stage
+    </a>
+    <a href="/admin" class="w3-bar-item w3-button w3-padding"><i class="glyphicon glyphicon-log-out"></i> log out
+    </a>
+    <div id="app"></div>
+  </div>
+
+
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;background-image: url('static/images/bgimg.jpg');background-size: cover;background-repeat: no-repeat;height: 100%;">
+  <!-- <iframe  name="iframe_a"  title="Iframe Example"></iframe> -->
+  <iframe  name="iframe_a" height="600px" width="100%" title="Iframe Example"></iframe>
+  
+  <br>
+  <!-- End page content -->
+</div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+
+</body>
+</html>

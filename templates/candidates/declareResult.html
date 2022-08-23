@@ -1,0 +1,66 @@
+{% extends 'candidates/layout.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body style="background-color: #D3D3D3;">
+  
+    
+<canvas id="myChart" class="chartElement"></canvas>
+
+
+  <a href="/decResult" class="decResult btn btn-primary">Declare Result</a>
+  <a href="/resetResult" class="resResult btn btn-danger">Reset result</a>
+<script >
+  
+  var temp='{{xvalues}}'.split(',');
+  var temp1='{{yvalues}}'.split(',');
+  var x=[];
+  var y=[];
+ 
+  for(let i=0;i<temp.length;i++)
+  {
+    
+    x[i]=temp[i].replace(/[^a-zA-Z. ]/g, '');
+  }
+  
+  for(let i=0;i<temp1.length;i++)
+  {
+    
+    y[i]=temp1[i].replace(/[^0-9. ]/g, '');
+  }
+  
+console.log(y);
+var xValues =x;
+var yValues =y;
+
+var barColors = ["red", "green","blue","orange","brown"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Election Result 2022",
+      
+    },
+    scales: {
+      yAxes: [{ticks: {min: 0}}],
+    }
+  }
+});
+</script>
+
+
+</body>
+</html>
+{% endblock %}
+
