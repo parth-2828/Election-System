@@ -1,5 +1,5 @@
 # Election-System
-Online Election System - Developed  and built this system using Python , Flask , HTML , CSS and MySQL. 
+Online Election System - Developed this system using Python , Flask , HTML , CSS and MySQL. 
 
 ![Candidate_reg](https://user-images.githubusercontent.com/73604763/186624023-8e904a24-354b-4801-96ee-66c9ccf45963.png)
 
